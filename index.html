@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#142a38">
+  <title>MocPok · Imagine it. Make it. Play together.</title>
+  <style>
+    :root{--navy:#142a38;--ink:#193444;--muted:#65747b;--cream:#f6f4ed;--paper:#fffef9;--line:#e2e6df;--teal:#187d76;--mint:#e3f1e8;--gold:#f7c653;--red:#a43c38;--shadow:0 10px 35px #19344408}
+    *{box-sizing:border-box}body{margin:0;background:var(--cream);color:var(--ink);font-family:"Avenir Next",Avenir,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased}button,textarea,a{font:inherit}button,a{-webkit-tap-highlight-color:transparent}button{cursor:pointer}button:disabled{cursor:wait}button:focus-visible,a:focus-visible,textarea:focus-visible{outline:3px solid #3ca49b;outline-offset:4px}svg{display:block}.shell{width:min(1200px,calc(100% - 64px));margin:auto}
+    .topbar{background:var(--navy);color:white}.nav{min-height:91px;display:flex;align-items:center;justify-content:space-between;gap:20px}.brand{display:flex;align-items:center;gap:13px}.brand-mark{width:43px;height:43px;color:var(--gold)}.brand-name{font-size:29px;letter-spacing:-1.3px;line-height:1;font-weight:800}.brand-tagline{font-size:11px;color:#c6d4d8;margin-top:7px;letter-spacing:.1px}.connection{display:flex;align-items:center;gap:9px;padding:10px 14px;border:1px solid #ffffff28;border-radius:99px;font-size:12px;font-weight:600;white-space:nowrap}.dot{width:7px;height:7px;background:var(--gold);border-radius:50%;flex:none}.connection[data-state="ready"] .dot{background:#83d8b4;box-shadow:0 0 0 4px #83d8b412}.connection[data-state="offline"] .dot{background:#f29a83}.connection[data-state="checking"] .dot{animation:breathe 1.4s infinite}
+    .hero{padding:48px 0 32px;display:flex;align-items:flex-end;justify-content:space-between;gap:28px}.eyebrow{display:flex;align-items:center;gap:8px;color:var(--teal);font-size:10px;letter-spacing:2px;font-weight:800;text-transform:uppercase}.eyebrow:before{content:"";display:block;width:18px;height:2px;background:currentColor}h1{font-size:clamp(30px,4vw,46px);font-weight:750;letter-spacing:-1.8px;line-height:1.13;margin:13px 0 12px}h1 .warm{position:relative;z-index:0}h1 .warm:after{content:"";position:absolute;bottom:2px;left:-2px;right:-2px;height:11px;background:#f7c65380;z-index:-1;border-radius:2px}.hero-copy{font-size:14px;color:var(--muted);line-height:1.7;margin:0;max-width:610px}.hero-note{display:flex;align-items:center;gap:10px;flex:none;font-size:12px;line-height:1.6;color:var(--muted);padding-bottom:3px}.hero-note svg{width:30px;height:30px;color:var(--teal)}
+    .workspace{display:grid;grid-template-columns:minmax(0, .91fr) minmax(0,1.09fr);gap:24px;align-items:stretch}.panel{background:var(--paper);border:1px solid var(--line);border-radius:20px;box-shadow:var(--shadow)}.idea-panel{padding:28px}.section-heading{display:flex;align-items:center;gap:10px}.number{width:26px;height:26px;display:grid;place-items:center;border:1px solid #cfdbd4;border-radius:8px;background:#f1f5ee;color:var(--teal);font-size:12px;font-weight:800}.section-heading h2{font-size:17px;letter-spacing:-.45px;margin:0}.section-caption{margin:9px 0 23px;font-size:13px;line-height:1.7;color:var(--muted)}label{display:block;font-size:12px;font-weight:750;margin-bottom:9px}.input-wrap{position:relative}textarea{width:100%;min-height:164px;resize:vertical;border:1px solid #d3ddd4;background:#fafbf5;border-radius:13px;padding:17px 18px;color:var(--ink);font-size:15px;line-height:1.7;transition:border-color .2s,box-shadow .2s}textarea:focus{border-color:var(--teal);box-shadow:0 0 0 3px #187d7609;outline:none}.input-note{font-size:11px;color:var(--muted);line-height:1.6;margin:8px 0 19px}.inspiration-label{font-size:10px;color:var(--muted);font-weight:750;letter-spacing:1.1px;text-transform:uppercase;margin-bottom:10px}.chips{display:flex;flex-wrap:wrap;gap:7px}.chip{border:1px solid #dce3d9;border-radius:99px;padding:8px 12px;color:#53656c;background:transparent;font-size:11px;font-weight:650;display:flex;gap:6px;align-items:center;transition:background .15s,border-color .15s}.chip:hover{border-color:#9bbcaf;background:#f0f5ee}.chip[aria-pressed="true"]{background:var(--mint);border-color:#afcabc;color:#235e50}.chip svg{width:14px;height:14px}.template-note{display:flex;gap:10px;margin:22px 0;padding:13px 14px;background:#f2f4ed;border-radius:10px}.template-note svg{width:17px;height:17px;margin-top:2px;flex:none;color:var(--teal)}.template-note p{font-size:11px;color:var(--muted);line-height:1.65;margin:0}.template-note strong{color:var(--ink);font-weight:700}.generate{width:100%;min-height:52px;display:flex;align-items:center;justify-content:center;gap:11px;padding:13px 16px;border:0;border-radius:11px;background:var(--gold);color:#19313c;font-weight:800;font-size:14px;box-shadow:0 3px 0 #dba83a;transition:background .15s,transform .15s}.generate:hover:not(:disabled){background:#ffd575;transform:translateY(-1px)}.generate:active:not(:disabled){transform:translateY(2px);box-shadow:0 1px 0 #dba83a}.generate:disabled{opacity:.85}.generate svg{width:17px;height:17px}.under-button{text-align:center;font-size:10px;color:var(--muted);margin:13px 0 0;line-height:1.7}.spinner{width:16px;height:16px;border-radius:50%;border:2px solid #19313c30;border-top-color:#19313c;animation:spin .8s linear infinite;display:none}.is-busy .spinner{display:inline-block}.is-busy .button-icon{display:none}
+    .progress{margin:19px 0 0;border-top:1px solid var(--line);padding-top:15px}.progress-top{display:flex;gap:9px;justify-content:space-between;font-size:11px;color:var(--teal);font-weight:700}.progress-time{white-space:nowrap;color:var(--muted);font-weight:500}.progress-track{height:4px;background:#e7eee4;overflow:hidden;border-radius:9px;margin:10px 0}.progress-track span{display:block;height:100%;width:35%;border-radius:9px;background:var(--teal);animation:travel 1.9s ease-in-out infinite}.progress p{font-size:10px;color:var(--muted);line-height:1.6;margin:0}.error{background:#fff1eb;border:1px solid #eed1c5;border-radius:10px;padding:13px;margin-top:18px;color:var(--red);font-size:12px;line-height:1.7}.error strong{display:block;font-size:12px;margin-bottom:3px}
+    .preview-panel{overflow:hidden;display:flex;flex-direction:column}.preview-top{display:flex;justify-content:space-between;gap:14px;align-items:center;padding:25px 26px 19px}.preview-top .number{background:#fff6db;border-color:#efdfb4;color:#92701d}.preview-label{font-size:10px;color:var(--muted);padding:6px 9px;border-radius:99px;border:1px solid var(--line);white-space:nowrap}.preview-label.ready{color:var(--teal);background:var(--mint);border-color:#d2e6d9}.stage{position:relative;min-height:360px;margin:0 21px;border-radius:13px;border:1px solid #e0e6d9;background-color:#edf1e6;background-image:radial-gradient(#69826725 .7px,transparent .7px);background-size:17px 17px;display:flex;align-items:center;justify-content:center;padding:19px;overflow:hidden;flex:1}.stage:before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at center,#ffffff90,transparent 75%);pointer-events:none}.placeholder{position:relative;text-align:center;max-width:290px;padding:28px 0}.placeholder-art{width:133px;height:133px;margin:0 auto 22px;color:var(--teal)}.placeholder h3{font-size:20px;letter-spacing:-.65px;margin:0 0 9px}.placeholder p{font-size:12px;line-height:1.8;color:#738178;margin:0}.preview-image{position:relative;width:100%;height:100%;max-height:430px;object-fit:contain;filter:drop-shadow(0 9px 13px #24433920)}.preview-footer{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:17px 25px 20px;font-size:10px;color:var(--muted);line-height:1.6}.legend{display:flex;gap:14px;flex-wrap:wrap}.legend span{display:flex;gap:5px;align-items:center}.legend i{width:7px;height:7px;display:block;border-radius:2px;background:var(--teal)}.legend span:nth-child(2) i{background:var(--gold)}.legend span:nth-child(3) i{background:#a9b9a4}.preview-message{max-width:155px;text-align:right}.preview-busy{position:absolute;inset:0;background:#edf1e6e8;display:flex;flex-direction:column;justify-content:center;align-items:center;z-index:2;text-align:center;gap:17px;padding:28px}.preview-busy .orbit{width:61px;height:61px;border:2px solid #cfdbcb;border-top:3px solid var(--teal);border-right:3px solid var(--gold);border-radius:18px;animation:spin 3s linear infinite}.preview-busy strong{font-size:16px;letter-spacing:-.3px}.preview-busy p{font-size:12px;line-height:1.8;color:var(--muted);margin:0;max-width:260px}
+    .results{margin-top:25px}.results-heading{display:flex;align-items:center;justify-content:space-between;gap:24px;margin-bottom:17px}.results-heading h2{font-size:22px;letter-spacing:-.6px;margin:0}.result-subtitle{font-size:12px;color:var(--muted);margin:7px 0 0;line-height:1.7}.verified{display:flex;align-items:center;gap:7px;font-size:10px;color:var(--teal);padding:8px 10px;border:1px solid #caddcf;background:#edf5eb;border-radius:99px;flex:none}.verified svg{width:13px;height:13px}.plan-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.plan-card{padding:20px 21px;border:1px solid var(--line);border-radius:13px;background:var(--paper);min-width:0}.plan-card:first-child{background:var(--navy);color:white;border-color:var(--navy)}.plan-label{font-size:9px;font-weight:800;letter-spacing:1.2px;text-transform:uppercase;color:var(--teal);margin-bottom:10px}.plan-card:first-child .plan-label{color:var(--gold)}.plan-value{font-size:12px;line-height:1.8;margin:0;white-space:pre-line;overflow-wrap:anywhere}.plan-card:first-child .plan-value{font-size:20px;line-height:1.4;font-weight:700;letter-spacing:-.4px}.downloads{margin-top:17px;display:flex;align-items:center;justify-content:space-between;gap:20px;background:#e9eee3;border:1px solid #dbe3d5;border-radius:13px;padding:19px 22px}.downloads-title{font-weight:750;font-size:13px;margin:0 0 5px}.downloads-caption{font-size:11px;line-height:1.6;color:var(--muted);margin:0}.download-links{display:flex;gap:8px;flex-wrap:wrap}.download-link{display:flex;align-items:center;gap:7px;text-decoration:none;color:var(--ink);background:var(--paper);border:1px solid #ced8c8;border-radius:8px;padding:10px 13px;font-size:11px;font-weight:750;white-space:nowrap}.download-link:hover{border-color:var(--teal);color:var(--teal)}.download-link svg{width:13px;height:13px}.meta{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin:12px 2px 0;color:var(--muted);font-size:10px;line-height:1.7}.how-it-works{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:35px;margin:31px 1px 33px;padding:25px 0 0;border-top:1px solid #dce2d6}.how-step{display:flex;gap:12px}.how-icon{color:var(--teal);background:#e8eee1;width:33px;height:33px;border-radius:10px;display:grid;place-items:center;flex:none}.how-icon svg{width:17px;height:17px}.how-step strong{display:block;font-size:12px;margin:1px 0 5px}.how-step p{font-size:11px;color:var(--muted);line-height:1.7;margin:0}.footer{border-top:1px solid #e1e5dc;padding:18px 0 25px;display:flex;justify-content:space-between;gap:24px;font-size:10px;line-height:1.8;color:#7b8789}.footer strong{color:#52656a;font-weight:750}.footer span:last-child{text-align:right}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}[hidden]{display:none!important}@keyframes spin{to{transform:rotate(360deg)}}@keyframes breathe{50%{opacity:.35}}@keyframes travel{0%{transform:translateX(-100%)}100%{transform:translateX(390%)}}
+    @media(min-width:1400px){.hero{padding-top:55px}.stage{min-height:380px}}@media(max-width:900px){.shell{width:calc(100% - 40px)}.hero-note{display:none}.workspace{grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);gap:17px}.idea-panel{padding:23px}.preview-top{padding:24px 20px 19px}.preview-top .section-heading h2{font-size:15px}.preview-label{font-size:9px}.preview-top .section-heading{gap:7px}.stage{margin:0 15px;padding:14px}.preview-footer{padding:16px 19px}.preview-message{display:none}.plan-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.downloads{align-items:flex-start;flex-direction:column;gap:14px}.how-it-works{gap:20px}}@media(max-width:650px){.shell{width:calc(100% - 30px)}.nav{min-height:83px;gap:10px}.brand-name{font-size:27px}.brand-mark{width:37px;height:37px}.brand{gap:9px}.brand-tagline{font-size:9px;max-width:170px}.connection{font-size:9px;padding:8px 10px;gap:7px}.dot{width:6px;height:6px}.hero{padding:32px 0 24px}h1{font-size:35px;letter-spacing:-1.4px;margin-top:12px}.hero-copy{font-size:12px;line-height:1.8}.eyebrow{font-size:9px;letter-spacing:1.7px}.workspace{grid-template-columns:1fr}.idea-panel{padding:24px}.section-caption{margin-bottom:19px}.stage{min-height:345px;margin:0 18px}.preview-top{padding:24px 23px 18px}.preview-top .section-heading h2{font-size:17px}.preview-label{font-size:10px}.preview-footer{padding:17px 23px}.preview-message{display:block}.how-it-works{grid-template-columns:1fr;gap:18px;margin-top:24px;padding-top:25px}.how-step p{font-size:11px}.how-step strong{font-size:12px}.plan-grid{grid-template-columns:1fr}.results-heading{align-items:flex-start;gap:12px}.results-heading h2{font-size:20px}.verified{font-size:9px;padding:7px 8px;gap:5px}.plan-card{padding:19px 20px}.footer{display:block;font-size:9px}.footer span{display:block}.footer span:last-child{text-align:left;margin-top:5px}.downloads{padding:19px}.download-link{padding:10px 11px}.result-subtitle{font-size:11px}.legend{gap:12px}textarea{min-height:145px}}@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}.progress-track span{width:100%;opacity:.7}}
+    .library{margin-top:18px;border:1px solid var(--line);border-radius:13px;background:#fffef980;overflow:hidden}.library summary{cursor:pointer;padding:18px 21px;font-size:12px;font-weight:750;display:flex;align-items:center;justify-content:space-between;gap:15px;list-style:none}.library summary:before{content:"+";font-size:19px;color:var(--teal);line-height:1}.library details[open] summary:before{content:"−"}.library summary::-webkit-details-marker{display:none}.library-summary-title{flex:1}.library-counts{font-size:10px;font-weight:500;color:var(--muted);text-align:right;line-height:1.6}.library-intro{font-size:11px;line-height:1.7;color:var(--muted);padding:0 21px;margin:0 0 15px}.reference-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;padding:0 21px 20px}.reference{border-top:2px solid #c9d9c3;padding-top:13px;min-width:0}.reference h3{font-size:13px;margin:0 0 7px;letter-spacing:-.2px}.reference p{font-size:11px;line-height:1.8;margin:0 0 9px;color:#52676c;white-space:pre-line;overflow-wrap:anywhere}.reference .reference-source{font-size:9px;line-height:1.6;color:var(--muted);overflow-wrap:anywhere}@media(max-width:650px){.library summary{padding:17px}.library-counts{font-size:9px;max-width:140px}.reference-grid{grid-template-columns:1fr;padding:0 17px 17px}.library-intro{padding:0 17px}}
+
+    @media(min-width:651px){.nav{min-height:72px}.hero{padding:25px 0 24px}h1{font-size:36px}.hero-copy{font-size:13px}.hero-note{display:none}.idea-panel{padding:22px}textarea{min-height:118px}.section-caption{margin-bottom:16px}.input-note{margin-bottom:13px}.template-note{margin:15px 0}.stage{min-height:330px}}
+    body.has-game .hero{display:none}body.has-game .workspace{margin-top:24px}
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="shell nav">
+      <div class="brand" aria-label="MocPok">
+        <svg class="brand-mark" viewBox="0 0 48 48" fill="none" aria-hidden="true"><rect x="4" y="4" width="31" height="31" rx="8" stroke="currentColor" stroke-width="3"/><path d="M15 15h28v20a8 8 0 0 1-8 8H15V15Z" fill="currentColor"/><path d="M23 25v10m10-10v10M23 30h10" stroke="#142a38" stroke-width="3" stroke-linecap="round"/></svg>
+        <div><div class="brand-name">MocPok</div><div class="brand-tagline">Imagine it. Make it. Play together.</div></div>
+      </div>
+      <div class="connection" id="connection" data-state="checking" role="status"><span class="dot" aria-hidden="true"></span><span id="connection-text">Checking local AI</span></div>
+    </div>
+  </header>
+  <main class="shell">
+    <section class="hero" aria-labelledby="page-title">
+      <div><div class="eyebrow">The family game workshop</div><h1 id="page-title">Big imagination.<br><span class="warm">Your next adventure.</span></h1><p class="hero-copy">Turn a wild idea into a maze adventure you can hold in your hands.<br>Create the story, make the board, and bring everyone to the table.</p></div>
+      <div class="hero-note"><svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="m16 3 3.2 8.8L28 15l-8.8 3.2L16 27l-3.2-8.8L4 15l8.8-3.2L16 3Z" stroke="currentColor" stroke-width="1.6"/><path d="m26 3 .9 2.6 2.6.9-2.6.9L26 10l-.9-2.6-2.6-.9 2.6-.9L26 3Z" fill="currentColor"/></svg><span>A little creativity.<br>A lot of playing together.</span></div>
+    </section>
+    <div class="workspace">
+      <section class="panel idea-panel" aria-labelledby="idea-heading">
+        <div class="section-heading"><span class="number" aria-hidden="true">1</span><h2 id="idea-heading">Dream up your adventure</h2></div>
+        <p class="section-caption">Dragons, distant planets, or a world of your own.<br>Where should your two explorers go?</p>
+        <form id="idea-form">
+          <label for="prompt">Your game idea</label>
+          <div class="input-wrap"><textarea id="prompt" name="prompt" required minlength="12" maxlength="2000" aria-describedby="input-note">Make a dragon maze for two explorers. We need to find two magic keys and reach the castle before the dragon wakes up. Make it a fun, cooperative family game.</textarea></div>
+          <p class="input-note" id="input-note">Tell us about your world, what to find, and what happens along the way.</p>
+          <div class="inspiration-label">Need a spark?</div>
+          <div class="chips" aria-label="Adventure ideas">
+            <button class="chip" type="button" data-prompt="dragon" aria-pressed="true"><svg viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="m3 12 2-6 4 3 3-5 3 4-2 6H5l-2-2Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><circle cx="12" cy="9" r=".8" fill="currentColor"/></svg>Dragon quest</button>
+            <button class="chip" type="button" data-prompt="space" aria-pressed="false"><svg viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M7 11C7 6 11 3 15 3c0 4-3 8-8 8Zm0 0-3 3m1-5-2-1 4-2m2 7 1 2 2-4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="6" r="1" fill="currentColor"/></svg>Space explorers</button>
+            <button class="chip" type="button" data-prompt="underwater" aria-pressed="false"><svg viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M2 9c4-5 8-5 11-1l3-2v6l-3-2c-3 4-7 4-11-1Z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/><circle cx="6" cy="8" r=".8" fill="currentColor"/></svg>Underwater world</button>
+          </div>
+          <div class="template-note"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><rect x="3" y="3" width="14" height="14" rx="3" stroke="currentColor" stroke-width="1.4"/><path d="M3 10h14M10 3v14" stroke="currentColor" stroke-width="1.2"/></svg><p><strong>Maze adventure builder.</strong><br>Two explorers · two collectibles · one 8 × 8 board.<br>Your idea changes the story and creates a new maze.</p></div>
+          <button type="submit" class="generate" id="generate"><span class="spinner" aria-hidden="true"></span><svg class="button-icon" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="m11 2 1.8 5.2L18 9l-5.2 1.8L11 16l-1.8-5.2L4 9l5.2-1.8L11 2Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="m3 13 .8 2.2L6 16l-2.2.8L3 19l-.8-2.2L0 16l2.2-.8L3 13Z" fill="currentColor"/></svg><span id="button-text">Create my adventure</span><span aria-hidden="true" class="button-icon">↗</span></button>
+          <p class="under-button">Made right here with local AI. No account needed.</p>
+        </form>
+        <div class="progress" id="progress" hidden role="status" aria-live="polite"><div class="progress-top"><span id="progress-text">Imagining your adventure…</span><span class="progress-time" id="progress-time">0s</span></div><div class="progress-track" aria-hidden="true"><span></span></div><p>The local AI writes your game plan. Then the maze builder creates the board and checks its paths. This can take a moment.</p></div>
+        <div class="error" id="error" hidden role="alert"><strong>We couldn't finish that adventure.</strong><span id="error-text"></span></div>
+      </section>
+      <section class="panel preview-panel" aria-labelledby="preview-heading" aria-busy="false" id="preview-panel">
+        <div class="preview-top"><div class="section-heading"><span class="number" aria-hidden="true">2</span><h2 id="preview-heading">Meet your game board</h2></div><span class="preview-label" id="preview-label">Your next creation</span></div>
+        <div class="stage" id="stage">
+          <div class="placeholder" id="placeholder"><svg class="placeholder-art" viewBox="0 0 140 140" fill="none" aria-hidden="true"><rect x="18" y="19" width="103" height="103" rx="18" fill="#fffef9" stroke="#cbd9c8" stroke-width="1.5" transform="rotate(-7 70 70)"/><rect x="24" y="22" width="98" height="98" rx="16" fill="#fffef9" stroke="#9ebca9" stroke-width="1.5" transform="rotate(5 73 71)"/><path d="M45 44h21v23H45v27h25V81h23V57H81V44h18M45 57h10m27 38h17M70 44V33M34 81h11" stroke="#97b3a0" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="46" cy="44" r="6" fill="#187d76"/><path d="m99 87 2.2 4.5 5 .7-3.6 3.5.9 5-4.5-2.4-4.5 2.4.9-5-3.6-3.5 5-.7L99 87Z" fill="#f7c653"/><path d="m116 10 1.7 4.8 4.8 1.7-4.8 1.7-1.7 4.8-1.7-4.8-4.8-1.7 4.8-1.7L116 10Z" fill="#e0ae37"/><circle cx="20" cy="108" r="3" fill="#c0d4bd"/><circle cx="129" cy="113" r="2" fill="#c0d4bd"/></svg><h3>Your adventure starts here.</h3><p>One spark of an idea.<br>A story and a maze made for your team.</p></div>
+          <img class="preview-image" id="preview-image" alt="" hidden>
+          <div class="preview-busy" id="preview-busy" hidden aria-hidden="true"><div class="orbit"></div><strong>A new adventure is taking shape.</strong><p>Think of your team name while we turn your idea into a game.</p></div>
+        </div>
+        <div class="preview-footer"><div class="legend"><span><i></i>2 explorers</span><span><i></i>2 collectibles</span><span><i></i>1 team</span></div><span class="preview-message" id="preview-message">A real board preview appears<br>after you create a game.</span></div>
+      </section>
+    </div>
+    <section class="results" id="results" hidden aria-labelledby="results-heading">
+      <div class="results-heading"><div><h2 id="results-heading">Your adventure, ready to play.</h2><p class="result-subtitle" id="result-subtitle">Here's the story. Your team brings it to life.</p></div><span class="verified" id="verified" hidden><svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.3"/><path d="m5 8 2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg><span id="verified-text">Maze paths checked</span></span></div>
+      <div class="plan-grid" id="plan-grid"></div>
+      <div class="downloads"><div><p class="downloads-title">From screen to the table.</p><p class="downloads-caption">Grab the whole kit, or choose a board and the rules.</p></div><div class="download-links" id="download-links"></div></div>
+      <div class="meta"><span id="board-meta"></span><span id="model-meta"></span></div>
+      <section class="library" id="library" hidden aria-label="Local reference library"><details><summary><span class="library-summary-title">A peek at the game shelf</span><span class="library-counts" id="library-counts"></span></summary><p class="library-intro">Reference excerpts found for this idea.</p><div class="reference-grid" id="reference-grid"></div></details></section>
+    </section>
+    <section class="how-it-works" aria-label="From idea to game night">
+      <div class="how-step"><span class="how-icon"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M7 14c0-2-3-2.5-3-6a6 6 0 1 1 12 0c0 3.5-3 4-3 6M7 14h6M8 17h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></span><div><strong>You bring the imagination.</strong><p>A dragon, an ocean, a faraway planet.<br>Start with a world you'd love to play in.</p></div></div>
+      <div class="how-step"><span class="how-icon"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><rect x="3" y="3" width="14" height="14" rx="3" stroke="currentColor" stroke-width="1.4"/><path d="M6 6h4v4H6v4h8v-4m0-4h-1" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg></span><div><strong>We shape the adventure.</strong><p>Local AI writes the plan. A maze builder<br>creates and checks the board's paths.</p></div></div>
+      <div class="how-step"><span class="how-icon"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="6" cy="6" r="2.5" stroke="currentColor" stroke-width="1.4"/><circle cx="14" cy="6" r="2.5" stroke="currentColor" stroke-width="1.4"/><path d="M2 17v-3a4 4 0 0 1 8 0v3m0 0v-3a4 4 0 0 1 8 0v3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></span><div><strong>Everyone gets to play.</strong><p>Make your board, choose your explorers,<br>and solve your new adventure together.</p></div></div>
+    </section>
+  </main>
+  <footer class="shell footer"><span><strong>MocPok</strong> · A family idea, made real.</span><span>Prototype: two-player maze adventures · Existing Qwen3 model, running locally.<br>3D files need slicing before printing. Try a round together and adjust your game.</span></footer>
+  <script>
+    (() => {
+      'use strict';
+      const el = id => document.getElementById(id);
+      const prompts = {
+        dragon: 'Make a dragon maze for two explorers. We need to find two magic keys and reach the castle before the dragon wakes up. Make it a fun, cooperative family game.',
+        space: 'Make a space maze for two explorers. We need to find two power crystals and reach our spaceship before the meteor storm arrives. Make it a fun, cooperative family game.',
+        underwater: 'Make an underwater maze for two explorers. We need to find two glowing pearls and reach our submarine before the giant octopus wakes up. Make it a fun, cooperative family game.'
+      };
+      const fieldLabels = [['title', 'Your game'], ['theme', 'The world'], ['mission', 'Your mission'], ['setup', 'Set the scene'], ['round', 'Each round'], ['winning_and_losing', 'The big finish']];
+      let busy = false;
+      let timer = null;
+      let blobUrl = null;
+
+      function setConnection(state, message) {
+        el('connection').dataset.state = state;
+        el('connection-text').textContent = message;
+      }
+      async function checkHealth() {
+        try {
+          const response = await fetch('/api/health', {cache: 'no-store'});
+          const health = await response.json();
+          if (!response.ok || !health.ok || health.ollama_available === false || health.model_installed === false) {
+            setConnection('offline', health.model_installed === false ? 'Local model not ready' : 'Local AI offline');
+            return false;
+          }
+          setConnection('ready', 'Local AI ready');
+          return true;
+        } catch (_) {
+          setConnection('offline', 'Local AI offline');
+          return false;
+        }
+      }
+      function setBusy(value) {
+        busy = value;
+        el('generate').disabled = value;
+        el('generate').classList.toggle('is-busy', value);
+        el('button-text').textContent = value ? 'Creating your adventure…' : 'Create my adventure';
+        el('progress').hidden = !value;
+        el('preview-busy').hidden = !value;
+        el('preview-panel').setAttribute('aria-busy', String(value));
+        if (value) {
+          const started = Date.now();
+          el('progress-text').textContent = 'Imagining your adventure…';
+          el('progress-time').textContent = '0s';
+          timer = window.setInterval(() => {
+            const elapsed = Math.floor((Date.now() - started) / 1000);
+            el('progress-time').textContent = elapsed + 's';
+            if (elapsed >= 18) el('progress-text').textContent = 'Still creating, right here on your Mac…';
+          }, 1000);
+        } else {
+          window.clearInterval(timer);
+        }
+      }
+      function assetUrl(value) {
+        if (typeof value !== 'string') return null;
+        try {
+          const url = new URL(value, window.location.href);
+          if (url.origin !== window.location.origin || !url.pathname.startsWith('/api/projects/') || !['http:', 'https:'].includes(url.protocol)) return null;
+          return url.href;
+        } catch (_) { return null; }
+      }
+      function asText(value) {
+        if (typeof value === 'string') return value;
+        if (Array.isArray(value)) return value.map(asText).join('\n');
+        if (value && typeof value === 'object') return Object.values(value).map(asText).join('\n');
+        return value === undefined || value === null ? 'Not provided.' : String(value);
+      }
+      function renderResult(data) {
+        if (!data || !data.plan || !data.board || !data.assets) throw new Error('The adventure came back incomplete. Please try again.');
+        document.body.classList.add('has-game');
+        const plan = data.plan;
+        const board = data.board;
+        const validation = board.validation || {};
+        const grid = board.grid || data.maze || {};
+        const width = Number(grid.width || 8), height = Number(grid.height || 8);
+        const connected = validation.connected === true || validation.reachable_cells === width * height || data.maze?.validated === true;
+        const cards = document.createDocumentFragment();
+        fieldLabels.forEach(([field, label]) => {
+          const article = document.createElement('article'); article.className = 'plan-card';
+          const heading = document.createElement('div'); heading.className = 'plan-label'; heading.textContent = label;
+          const text = document.createElement('p'); text.className = 'plan-value'; text.textContent = asText(plan[field]);
+          article.append(heading, text); cards.append(article);
+        });
+        el('plan-grid').replaceChildren(cards);
+        el('results-heading').textContent = 'Your adventure, ready to play.';
+        el('result-subtitle').textContent = 'Here’s the story. Your team brings it to life.';
+        el('verified').hidden = !connected;
+        el('verified-text').textContent = connected ? 'All ' + (width * height) + ' spaces connected' : 'Maze paths checked';
+        el('preview-label').textContent = connected ? 'Maze checked' : 'Board created';
+        el('preview-label').classList.toggle('ready', connected);
+        const svgUrl = assetUrl(data.assets.svg);
+        if (blobUrl) { URL.revokeObjectURL(blobUrl); blobUrl = null; }
+        if (svgUrl) {
+          el('preview-image').src = svgUrl;
+        } else if (typeof data.preview_svg === 'string' && data.preview_svg.includes('<svg')) {
+          blobUrl = URL.createObjectURL(new Blob([data.preview_svg], {type: 'image/svg+xml'}));
+          el('preview-image').src = blobUrl;
+        } else { throw new Error('The board preview is missing. Please try creating the adventure again.'); }
+        el('preview-image').alt = asText(plan.title) + ' — generated ' + width + ' by ' + height + ' maze board with two explorer starts, two collectibles, and an exit.';
+        el('preview-image').hidden = false;
+        el('placeholder').hidden = true;
+        el('preview-message').textContent = width + ' × ' + height + ' maze · made from your idea';
+        const links = document.createDocumentFragment();
+        [['kit', 'Full print kit · ZIP'], ['svg', 'Paper board · SVG'], ['stl', '3D board · STL'], ['rules', 'Game rules']].forEach(([key, title]) => {
+          const url = assetUrl(data.assets[key]);
+          if (!url) return;
+          const link = document.createElement('a'); link.className = 'download-link'; link.href = url; link.download = ''; link.textContent = '↓  ' + title;
+          links.append(link);
+        });
+        el('download-links').replaceChildren(links);
+        const size = board.dimensions_mm || {};
+        const boardSize = size.board_width || board.board_mm || board.width_mm;
+        const metadata = [width + ' × ' + height + ' spaces', '2 explorers', asText(board.difficulty || plan.difficulty || 'family') + ' difficulty'];
+        if (typeof boardSize === 'number') metadata.push(boardSize + ' mm board');
+        if (board.seed !== undefined || plan.maze_seed !== undefined) metadata.push('Maze seed ' + (board.seed ?? plan.maze_seed));
+        el('board-meta').textContent = metadata.join(' · ');
+        el('model-meta').textContent = (data.model?.local === true ? 'Created locally with ' : 'Created with ') + asText(data.model?.name || 'mocpok') + ' · existing Qwen3 model';
+        const references = Array.isArray(data.references) ? data.references : [];
+        const counts = data.library_counts || {};
+        const indexed = Number(counts.indexed_books || 0);
+        const chunks = Number(counts.chunks || 0);
+        el('library').hidden = references.length === 0 && indexed === 0;
+        el('library-counts').textContent = indexed.toLocaleString() + ' indexed books · ' + chunks.toLocaleString() + ' reference passages';
+        const referenceCards = document.createDocumentFragment();
+        references.slice(0, 6).forEach(reference => {
+          const article = document.createElement('article'); article.className = 'reference';
+          const title = document.createElement('h3'); title.textContent = asText(reference.title || 'Game reference');
+          const excerpt = document.createElement('p'); excerpt.textContent = asText(reference.excerpt || '');
+          const source = document.createElement('div'); source.className = 'reference-source'; source.textContent = 'Source: ' + asText(reference.source || 'Local library');
+          article.append(title, excerpt, source); referenceCards.append(article);
+        });
+        if (!references.length && indexed > 0) {
+          const empty = document.createElement('p'); empty.className = 'reference-source'; empty.textContent = 'No matching excerpt was returned for this adventure.'; referenceCards.append(empty);
+        }
+        el('reference-grid').replaceChildren(referenceCards);
+        el('results').hidden = false;
+        setConnection('ready', 'Local AI ready');
+      }
+      document.querySelectorAll('[data-prompt]').forEach(button => {
+        button.addEventListener('click', () => {
+          if (busy) return;
+          el('prompt').value = prompts[button.dataset.prompt];
+          document.querySelectorAll('[data-prompt]').forEach(chip => chip.setAttribute('aria-pressed', String(chip === button)));
+          el('prompt').focus();
+        });
+      });
+      el('prompt').addEventListener('input', () => document.querySelectorAll('[data-prompt]').forEach(chip => chip.setAttribute('aria-pressed', String(prompts[chip.dataset.prompt] === el('prompt').value))));
+      el('preview-image').addEventListener('error', () => {
+        el('preview-message').textContent = 'Preview could not load. Try the board download below.';
+      });
+      el('idea-form').addEventListener('submit', async event => {
+        event.preventDefault();
+        if (busy || !el('idea-form').reportValidity()) return;
+        const prompt = el('prompt').value.trim();
+        if (prompt.length < 12) {
+          el('error-text').textContent = 'Give your adventure a little more detail — at least 12 characters.';
+          el('error').hidden = false;
+          return;
+        }
+        el('error').hidden = true;
+        setBusy(true);
+        const controller = new AbortController();
+        const timeout = window.setTimeout(() => controller.abort(), 240000);
+        try {
+          const response = await fetch('/api/generate', {method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({prompt}), signal: controller.signal});
+          let data;
+          try { data = await response.json(); } catch (_) { throw new Error('The workshop sent an unreadable response. Please try again.'); }
+          if (!response.ok || data.error) throw new Error(typeof data.error === 'string' ? data.error : 'The adventure could not be created. Please try again.');
+          renderResult(data);
+        } catch (error) {
+          el('error-text').textContent = error.name === 'AbortError' ? 'This idea is taking longer than expected. Please try again, or use one of the adventure ideas above.' : error instanceof TypeError ? 'We couldn’t reach the local workshop. Make sure the MocPok app is running, then try again.' : error.message;
+          el('error').hidden = false;
+          checkHealth();
+        } finally {
+          window.clearTimeout(timeout);
+          setBusy(false);
+        }
+      });
+      checkHealth();
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,8 @@
+# Generated games (each run writes a new folder here)
+projects/
+# Local rulebook search index (built from third-party rule text; rebuild locally)
+library.sqlite3
+.library-*.sqlite3
+__pycache__/
+*.pyc
+.DS_Store

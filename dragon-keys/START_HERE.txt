@@ -1,0 +1,21 @@
+MOCPOK: DRAGON KEYS
+
+Open Print_and_Play_Guide.pdf first.
+
+1. Open Bambu_Studio/00_First_Test.3mf in Bambu Studio.
+2. Select your actual PLA preset, Textured PEI (or your own actual plate), and AMS slot. Slice, then print.
+3. Test the pawn in the 23mm passage.
+4. Print 01_Maze_Board, 02_Dragon_Clock, and the four Fast projects.
+5. Use an ordinary six-sided die; it is the only playing component not printed.
+
+AMS colors: 1 white/ivory, 2 blue, 3 green/teal, 4 gold/yellow.
+After board and clock, change slot1 to red for Fast_06_Dragon_Marker.
+Each Fast file contains one filament. Map it to the appropriate loaded AMS slot in the print dialog.
+
+The optional 03_Game_Pieces_AMS project uses BLUE/GREEN/GOLD/RED and replaces the four Fast files. It uses more time and purge filament.
+
+No G-code has been included: slice the editable3MF against your actual loaded material and plate. Models are millimetres; keep scale100%.
+
+All9STLs passed watertight/winding/volume checks; all8Bambu projects sliced successfully. Exported board walls agree with all112specified internal passage boundaries. Rules and routes were checked digitally; the small test print passed and pawn passage fit was confirmed on November 5, 2026. The full board print and full game playtest remain to be done.
+
+Estimated fast route including test:5h27m,192gPLA. Allow time for plate swaps and first physical playtest.

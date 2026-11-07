@@ -1,0 +1,137 @@
+{
+  "mesh_checks": [
+    {
+      "file": "STL/01_Maze_Board_216mm.stl",
+      "watertight": true,
+      "consistent_winding": true,
+      "components": 1,
+      "dimensions_mm": [
+        216.0,
+        216.0,
+        11.0
+      ],
+      "volume_mm3": 170658.062,
+      "sha256": "aaa78b05499d5029dd3d3171885ea6791bc8042cbc018d86302a29754c671b69"
+    },
+    {
+      "file": "STL/02_Dragon_Clock_214mm.stl",
+      "watertight": true,
+      "consistent_winding": true,
+      "components": 1,
+      "dimensions_mm": [
+        214.0,
+        30.0,
+        3.0
+      ],
+      "volume_mm3": 19001.725,
+      "sha256": "425dd2ab22671dd757592629a4913e768151b0aec005233d2ab5e740ac235196"
+    },
+    {
+      "file": "STL/Dragon_Clock_Marker.stl",
+      "watertight": true,
+      "consistent_winding": true,
+      "components": 1,
+      "dimensions_mm": [
+        12.0,
+        12.0,
+        3.05
+      ],
+      "volume_mm3": 285.818,
+      "sha256": "10b2e321a671023009850dcc86d8a735fea574365428708f83796a7900226ede"
+    },
+    {
+      "file": "STL/Explorer_1_Pointed.stl",
+      "watertight": true,
+      "consistent_winding": true,
+      "components": 1,
+      "dimensions_mm": [
+        12.0,
+        12.0,
+        23.0
+      ],
+      "volume_mm3": 1137.28,
+      "sha256": "98fc322b0ac366ad64d0a4f77320838776f77ab15a175eb5dc4f62d45ec4f636"
+    },
+    {
+      "file": "STL/Explorer_2_Round.stl",
+      "watertight": true,
+      "consistent_winding": true,
+      "components": 1,
+      "dimensions_mm": [
+        12.0,
+        12.0,
+        22.7
+      ],
+      "volume_mm3": 1120.942,
+      "sha256": "3dbcfe0f7b0ca3093c0b9701f082eec7c3b437c01b8d0700976ab2aa993cf450"
+    },
+    {
+      "file": "STL/Key_1_Single_Tooth.stl",
+      "watertight": true,
+      "consistent_winding": true,
+      "components": 1,
+      "dimensions_mm": [
+        18.0,
+        10.0,
+        2.8
+      ],
+      "volume_mm3": 269.248,
+      "sha256": "7b735da0c8ecae7457b9fa0cf75b1b58097190a589e8d44b8aeb31b33879b462"
+    },
+    {
+      "file": "STL/Key_2_Double_Tooth.stl",
+      "watertight": true,
+      "consistent_winding": true,
+      "components": 1,
+      "dimensions_mm": [
+        18.0,
+        10.0,
+        2.8
+      ],
+      "volume_mm3": 282.184,
+      "sha256": "3460940b9652957df2c7b11232d95772ec9a5d0cdc2cbb8f9daaed24d6a48080"
+    },
+    {
+      "file": "STL/Portal_Castle.stl",
+      "watertight": true,
+      "consistent_winding": true,
+      "components": 1,
+      "dimensions_mm": [
+        20.0,
+        20.0,
+        3.15
+      ],
+      "volume_mm3": 1075.656,
+      "sha256": "bc9e3f687c1dea73c39e044889950bcaa81294896c007ec6cb4dd698c675b743"
+    },
+    {
+      "file": "STL/Test_Passage_23mm.stl",
+      "watertight": true,
+      "consistent_winding": true,
+      "components": 1,
+      "dimensions_mm": [
+        29.0,
+        25.0,
+        11.0
+      ],
+      "volume_mm3": 2975.0,
+      "sha256": "d5b15c8c213947669e4fc4252f2b1c1e0fa3b11cbfac78266c9e698b70bb3bcc"
+    }
+  ],
+  "board_checks": {
+    "independent_method": "Manifold slice of exported STL at z=7 mm, even-odd polygon reconstruction; point containment at internal passage midpoints",
+    "internal_boundaries_checked": 112,
+    "mismatches": [],
+    "all_64_cell_centers_clear": true
+  },
+  "slicer": "Bambu Studio2.7.1",
+  "all_8_projects_sliced_successfully": true,
+  "physical_print_test": {
+    "status": "passed",
+    "date": "2026-11-05",
+    "evidence": "User reports test prints came out nicely and confirms pawn moves freely through printed passage. Bambu Studio shows 00_First_Test completed, 115/115 layers.",
+    "scope": "Test passage, pointed explorer, single-tooth key only; full board and complete playtest remain pending.",
+    "printer": "X1 Carbon, 0.4 mm nozzle",
+    "material": "White PLA, AMS A1"
+  }
+}

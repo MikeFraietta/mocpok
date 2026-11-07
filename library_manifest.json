@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "indexed_at": "2026-11-07T20:13:38+00:00",
+  "engine": "SQLite FTS5; local lexical retrieval",
+  "library_counts": {
+    "indexed_books": 4,
+    "chunks": 77
+  },
+  "maximum_excerpt_characters": 600,
+  "maximum_references": 3,
+  "model_training_performed": false,
+  "full_corpus_indexed": false,
+  "index_scope": "Only the named, already readable source files listed here are indexed.",
+  "corpus_status": "Four selected corpus candidates checked; counts report only readable indexed documents.",
+  "source_note": "MeepleLM corpus documents are LLM-restructured rules references and may contain errors. They are not verified official rulebooks.",
+  "fallback_used": false,
+  "candidates": [
+    {
+      "source": "meeplelm/bgg-30549.md",
+      "state": "readable"
+    },
+    {
+      "source": "meeplelm/bgg-65244.md",
+      "state": "readable"
+    },
+    {
+      "source": "meeplelm/bgg-1219.md",
+      "state": "readable"
+    },
+    {
+      "source": "meeplelm/bgg-822.md",
+      "state": "readable"
+    }
+  ],
+  "documents": [
+    {
+      "source": "meeplelm/bgg-30549.md",
+      "title": "Pandemic",
+      "kind": "llm_restructured_rules",
+      "first_heading": "1. Lore & Objective",
+      "sha256": "a3c5dfbd44669ee2d28f19e7b207b40b3129ece764e2cec6e31ce5836d47d710",
+      "chunks": 19,
+      "original_path": "/Users/mike/Desktop/board-game-rules-corpus/corpus/meeplelm/bgg-30549.md"
+    },
+    {
+      "source": "meeplelm/bgg-65244.md",
+      "title": "Forbidden Island",
+      "kind": "llm_restructured_rules",
+      "first_heading": "Comprehensive Reference Manual",
+      "sha256": "cb38f167cdce3613ecac5cd7e7ed22a8c0e6d84fd01f8c29ac22f14adf179044",
+      "chunks": 23,
+      "original_path": "/Users/mike/Desktop/board-game-rules-corpus/corpus/meeplelm/bgg-65244.md"
+    },
+    {
+      "source": "meeplelm/bgg-1219.md",
+      "title": "Labyrinth variants",
+      "kind": "llm_restructured_rules",
+      "first_heading": "Comprehensive Reference Manual",
+      "sha256": "91ecdbf9e1ee55548e4b23ee5c24e8b312351a6a605f48dc05eb607e584896dc",
+      "chunks": 19,
+      "original_path": "/Users/mike/Desktop/board-game-rules-corpus/corpus/meeplelm/bgg-1219.md"
+    },
+    {
+      "source": "meeplelm/bgg-822.md",
+      "title": "Carcassonne",
+      "kind": "llm_restructured_rules",
+      "first_heading": "Comprehensive Reference Manual",
+      "sha256": "6369bf136905287312a115432cca6acd432ead9044d133632d1291b24f7bd817",
+      "chunks": 16,
+      "original_path": "/Users/mike/Desktop/board-game-rules-corpus/corpus/meeplelm/bgg-822.md"
+    }
+  ]
+}

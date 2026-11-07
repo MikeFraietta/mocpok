@@ -1,0 +1,58 @@
+[
+  {
+    "project": "00_First_Test",
+    "seconds": 1150,
+    "grams": 4.73,
+    "changes": 0,
+    "warnings": ""
+  },
+  {
+    "project": "01_Maze_Board",
+    "seconds": 12971,
+    "grams": 162.79,
+    "changes": 0,
+    "warnings": ""
+  },
+  {
+    "project": "02_Dragon_Clock",
+    "seconds": 2458,
+    "grams": 18.72,
+    "changes": 0,
+    "warnings": ""
+  },
+  {
+    "project": "03_Game_Pieces_AMS",
+    "seconds": 16582,
+    "grams": 62.5,
+    "changes": 144,
+    "warnings": ""
+  },
+  {
+    "project": "Fast_03_Explorer_1",
+    "seconds": 914,
+    "grams": 1.45,
+    "changes": 0,
+    "warnings": ""
+  },
+  {
+    "project": "Fast_04_Explorer_2",
+    "seconds": 932,
+    "grams": 1.48,
+    "changes": 0,
+    "warnings": ""
+  },
+  {
+    "project": "Fast_05_Keys_and_Castle",
+    "seconds": 685,
+    "grams": 2.18,
+    "changes": 0,
+    "warnings": ""
+  },
+  {
+    "project": "Fast_06_Dragon_Marker",
+    "seconds": 533,
+    "grams": 0.66,
+    "changes": 0,
+    "warnings": ""
+  }
+]
