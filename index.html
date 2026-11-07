@@ -33,13 +33,13 @@
   </header>
   <main class="shell">
     <section class="hero" aria-labelledby="page-title">
-      <div><div class="eyebrow">The family game workshop</div><h1 id="page-title">Big imagination.<br><span class="warm">Your next adventure.</span></h1><p class="hero-copy">Turn a wild idea into a maze adventure you can hold in your hands.<br>Create the story, make the board, and bring everyone to the table.</p></div>
+      <div><div class="eyebrow">The family game workshop</div><h1 id="page-title">Big imagination.<br><span class="warm">Your next adventure.</span></h1><p class="hero-copy">Turn a wild idea into a board game you can hold in your hands.<br>Create the story, make the board, and bring everyone to the table.</p></div>
       <div class="hero-note"><svg viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="m16 3 3.2 8.8L28 15l-8.8 3.2L16 27l-3.2-8.8L4 15l8.8-3.2L16 3Z" stroke="currentColor" stroke-width="1.6"/><path d="m26 3 .9 2.6 2.6.9-2.6.9L26 10l-.9-2.6-2.6-.9 2.6-.9L26 3Z" fill="currentColor"/></svg><span>A little creativity.<br>A lot of playing together.</span></div>
     </section>
     <div class="workspace">
       <section class="panel idea-panel" aria-labelledby="idea-heading">
         <div class="section-heading"><span class="number" aria-hidden="true">1</span><h2 id="idea-heading">Dream up your adventure</h2></div>
-        <p class="section-caption">Dragons, distant planets, or a world of your own.<br>Where should your two explorers go?</p>
+        <p class="section-caption">Dragons, distant planets, or a world of your own.<br>What game do you want to play?</p>
         <form id="idea-form">
           <label for="prompt">Your game idea</label>
           <div class="input-wrap"><textarea id="prompt" name="prompt" required minlength="12" maxlength="2000" aria-describedby="input-note">Make a dragon maze for two explorers. We need to find two magic keys and reach the castle before the dragon wakes up. Make it a fun, cooperative family game.</textarea></div>
@@ -49,8 +49,10 @@
             <button class="chip" type="button" data-prompt="dragon" aria-pressed="true"><svg viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="m3 12 2-6 4 3 3-5 3 4-2 6H5l-2-2Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><circle cx="12" cy="9" r=".8" fill="currentColor"/></svg>Dragon quest</button>
             <button class="chip" type="button" data-prompt="space" aria-pressed="false"><svg viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M7 11C7 6 11 3 15 3c0 4-3 8-8 8Zm0 0-3 3m1-5-2-1 4-2m2 7 1 2 2-4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="6" r="1" fill="currentColor"/></svg>Space explorers</button>
             <button class="chip" type="button" data-prompt="underwater" aria-pressed="false"><svg viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M2 9c4-5 8-5 11-1l3-2v6l-3-2c-3 4-7 4-11-1Z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/><circle cx="6" cy="8" r=".8" fill="currentColor"/></svg>Underwater world</button>
+            <button class="chip" type="button" data-prompt="city" aria-pressed="false"><svg viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M2 16V8l4-3 4 3v8M10 16V4h6v12M1 16h16" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg>Williamsburg property game</button>
+            <button class="chip" type="button" data-prompt="forest" aria-pressed="false"><svg viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M9 2 4 9h3l-3 5h10l-3-5h3L9 2Zm0 12v3" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg>Forest tile match</button>
           </div>
-          <div class="template-note"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><rect x="3" y="3" width="14" height="14" rx="3" stroke="currentColor" stroke-width="1.4"/><path d="M3 10h14M10 3v14" stroke="currentColor" stroke-width="1.2"/></svg><p><strong>Maze adventure builder.</strong><br>Two explorers · two collectibles · one 8 × 8 board.<br>Your idea changes the story and creates a new maze.</p></div>
+          <div class="template-note"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><rect x="3" y="3" width="14" height="14" rx="3" stroke="currentColor" stroke-width="1.4"/><path d="M3 10h14M10 3v14" stroke="currentColor" stroke-width="1.2"/></svg><p><strong>Any kind of board game.</strong><br>Mazes · race tracks · property boards · grids · tiles and cards.<br>Maze adventures also get a 3D-printable board.</p></div>
           <button type="submit" class="generate" id="generate"><span class="spinner" aria-hidden="true"></span><svg class="button-icon" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="m11 2 1.8 5.2L18 9l-5.2 1.8L11 16l-1.8-5.2L4 9l5.2-1.8L11 2Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="m3 13 .8 2.2L6 16l-2.2.8L3 19l-.8-2.2L0 16l2.2-.8L3 13Z" fill="currentColor"/></svg><span id="button-text">Create my adventure</span><span aria-hidden="true" class="button-icon">↗</span></button>
           <p class="under-button">Made right here with local AI. No account needed.</p>
         </form>
@@ -80,7 +82,7 @@
       <div class="how-step"><span class="how-icon"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="6" cy="6" r="2.5" stroke="currentColor" stroke-width="1.4"/><circle cx="14" cy="6" r="2.5" stroke="currentColor" stroke-width="1.4"/><path d="M2 17v-3a4 4 0 0 1 8 0v3m0 0v-3a4 4 0 0 1 8 0v3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></span><div><strong>Everyone gets to play.</strong><p>Make your board, choose your explorers,<br>and solve your new adventure together.</p></div></div>
     </section>
   </main>
-  <footer class="shell footer"><span><strong>MocPok</strong> · A family idea, made real.</span><span>Prototype: two-player maze adventures · Existing Qwen3 model, running locally.<br>3D files need slicing before printing. Try a round together and adjust your game.</span></footer>
+  <footer class="shell footer"><span><strong>MocPok</strong> · A family idea, made real.</span><span>Prototype: any kind of board game · Existing Qwen3 model, running locally.<br>3D files need slicing before printing. Try a round together and adjust your game.</span></footer>
   <script>
     (() => {
       'use strict';
@@ -88,7 +90,9 @@
       const prompts = {
         dragon: 'Make a dragon maze for two explorers. We need to find two magic keys and reach the castle before the dragon wakes up. Make it a fun, cooperative family game.',
         space: 'Make a space maze for two explorers. We need to find two power crystals and reach our spaceship before the meteor storm arrives. Make it a fun, cooperative family game.',
-        underwater: 'Make an underwater maze for two explorers. We need to find two glowing pearls and reach our submarine before the giant octopus wakes up. Make it a fun, cooperative family game.'
+        underwater: 'Make an underwater maze for two explorers. We need to find two glowing pearls and reach our submarine before the giant octopus wakes up. Make it a fun, cooperative family game.',
+        city: 'Create a monopoly but use Williamsburg, Brooklyn as the location, with Williamsburg landmarks.',
+        forest: 'Make a tile-matching game like mah jong, but the tiles are trees and forest animals.'
       };
       const fieldLabels = [['title', 'Your game'], ['theme', 'The world'], ['mission', 'Your mission'], ['setup', 'Set the scene'], ['round', 'Each round'], ['winning_and_losing', 'The big finish']];
       let busy = false;
@@ -220,6 +224,54 @@
         el('results').hidden = false;
         setConnection('ready', 'Local AI ready');
       }
+      const anyLabels = [['title', 'Your game'], ['game_type', 'Kind of game'], ['theme', 'The world'], ['goal', 'Your goal'], ['components', 'What you need'], ['setup', 'Set it up'], ['turn', 'On your turn'], ['winning', 'How to win']];
+      const kindNames = {race_track: 'Race track', grid_board: 'Grid board', tiles_or_cards: 'Tiles and cards', property_loop: 'Property board'};
+      function renderAny(data) {
+        if (!data || !data.plan || !data.assets) throw new Error('The game came back incomplete. Please try again.');
+        document.body.classList.add('has-game');
+        const plan = data.plan;
+        const cards = document.createDocumentFragment();
+        anyLabels.forEach(([field, label]) => {
+          const article = document.createElement('article'); article.className = 'plan-card';
+          const heading = document.createElement('div'); heading.className = 'plan-label'; heading.textContent = label;
+          const text = document.createElement('p'); text.className = 'plan-value';
+          text.textContent = Array.isArray(plan[field]) ? plan[field].map(item => '• ' + item).join('\n') : asText(plan[field]);
+          text.style.whiteSpace = 'pre-line';
+          article.append(heading, text); cards.append(article);
+        });
+        el('plan-grid').replaceChildren(cards);
+        el('results-heading').textContent = 'Your game, ready to play.';
+        el('result-subtitle').textContent = 'The AI wrote these rules. Play a round, then make them your own.';
+        el('verified').hidden = true;
+        el('preview-label').textContent = kindNames[plan.kind] || 'Board created';
+        el('preview-label').classList.add('ready');
+        if (blobUrl) { URL.revokeObjectURL(blobUrl); blobUrl = null; }
+        const svgUrl = assetUrl(data.assets.svg);
+        if (svgUrl) el('preview-image').src = svgUrl;
+        else if (typeof data.preview_svg === 'string' && data.preview_svg.includes('<svg')) {
+          blobUrl = URL.createObjectURL(new Blob([data.preview_svg], {type: 'image/svg+xml'}));
+          el('preview-image').src = blobUrl;
+        } else throw new Error('The board preview is missing. Please try again.');
+        el('preview-image').alt = asText(plan.title) + ' — printable ' + (kindNames[plan.kind] || 'board').toLowerCase();
+        el('preview-image').hidden = false;
+        el('placeholder').hidden = true;
+        el('preview-message').textContent = (kindNames[plan.kind] || 'Board') + ' · made from your idea';
+        const links = document.createDocumentFragment();
+        [['kit', 'Full print kit · ZIP'], ['svg', 'Paper board · SVG'], ['rules', 'Game rules']].forEach(([key, title]) => {
+          const url = assetUrl(data.assets[key]);
+          if (!url) return;
+          const link = document.createElement('a'); link.className = 'download-link'; link.href = url; link.download = ''; link.textContent = '↓  ' + title;
+          links.append(link);
+        });
+        el('download-links').replaceChildren(links);
+        const meta = [asText(plan.players)];
+        if (plan.place && plan.place.display) meta.push('Real places in ' + plan.place.display);
+        el('board-meta').textContent = meta.join(' · ');
+        el('model-meta').textContent = 'Designed locally with ' + asText(data.model?.name || 'mocpok') + ' · existing Qwen3 model · ' + asText(data.model?.elapsed_seconds) + 's';
+        el('library').hidden = true;
+        el('results').hidden = false;
+        setConnection('ready', 'Local AI ready');
+      }
       document.querySelectorAll('[data-prompt]').forEach(button => {
         button.addEventListener('click', () => {
           if (busy) return;
@@ -250,7 +302,7 @@
           let data;
           try { data = await response.json(); } catch (_) { throw new Error('The workshop sent an unreadable response. Please try again.'); }
           if (!response.ok || data.error) throw new Error(typeof data.error === 'string' ? data.error : 'The adventure could not be created. Please try again.');
-          renderResult(data);
+          if (data.mode === 'any') renderAny(data); else renderResult(data);
         } catch (error) {
           el('error-text').textContent = error.name === 'AbortError' ? 'This idea is taking longer than expected. Please try again, or use one of the adventure ideas above.' : error instanceof TypeError ? 'We couldn’t reach the local workshop. Make sure the MocPok app is running, then try again.' : error.message;
           el('error').hidden = false;

@@ -264,6 +264,86 @@ def generate_project(prompt: str) -> dict:
     }
 
 
+def generate_any(prompt: str) -> dict:
+    """Any kind of board game. Maze adventures keep the original rule-checked path."""
+    import random
+    import re
+    import anygame
+    wants_property = bool(anygame.PROPERTY_WORDS.search(prompt))
+    if re.search(r"\bmaze\b", prompt, re.I) and not wants_property:
+        return {**generate_project(prompt), "mode": "maze"}
+    started = time.monotonic()
+    place = anygame.find_place(prompt)
+    hint = ""
+    if wants_property:
+        hint += "\nThis game must use kind \"property_loop\"."
+    if place:
+        hint += ("\nThe game takes place in " + place["display"] + ". The board will show these real places: "
+                 + ", ".join(place["landmarks"]) + ". Mention a few of them in the theme. For board_labels, list only 4 of these places.")
+    safe = prompt.replace("<|", "< |").replace("|>", "| >")
+    model_prompt = (
+        "<|im_start|>system\n" + anygame.SYSTEM + hint
+        + "\nReturn only the JSON object, with no commentary.<|im_end|>\n"
+        + "<|im_start|>user\n" + safe + "\n/no_think<|im_end|>\n"
+        + "<|im_start|>assistant\n<think>\n\n</think>\n\n"
+    )
+    response = ollama_request("/api/generate", {
+        "model": MODEL, "raw": True, "prompt": model_prompt, "format": anygame.SCHEMA,
+        "stream": False, "think": False, "keep_alive": "15m",
+        "options": {"temperature": 0.5, "num_ctx": 4096, "num_predict": 900, "stop": ["<|im_end|>", "<|endoftext|>"]},
+    }, timeout=150)
+    if response.get("done_reason") == "length":
+        raise DemoError("The model ran out of room before finishing the game. Please try again.", "incomplete_plan")
+    try:
+        draft = json.loads(response["response"])
+        plan = anygame.validate(draft)
+    except (KeyError, TypeError, ValueError) as exc:
+        raise DemoError("The model did not return a complete game design. Please try again.", "invalid_plan") from exc
+    if wants_property:
+        plan["kind"] = "property_loop"
+    if plan["kind"] == "maze_adventure":
+        return {**generate_project(prompt), "mode": "maze"}
+    plan["title"] = anygame.detrademark(plan["title"])
+    plan["game_type"] = anygame.detrademark(plan["game_type"])
+    if plan["game_type"].strip().lower().replace(" ", "_") in anygame.KINDS:
+        plan["game_type"] = {"race_track": "Race game", "grid_board": "Grid strategy game", "tiles_or_cards": "Tile and card game",
+                             "property_loop": "Property-trading game"}.get(plan["kind"], "Board game")
+    if plan["kind"] == "property_loop":
+        # Board prices are $1-$8, so the money rules must match the printed board.
+        plan.update(anygame.PROPERTY_RULES)
+        if place:
+            plan["place"] = place
+    svg = anygame.render_svg(plan)
+    rules = anygame.make_rules(plan)
+    project_id = str(uuid4())
+    metadata = {
+        "name": response.get("model", MODEL), "local": True, "base_url": OLLAMA_URL,
+        "generated_at": response.get("created_at"), "elapsed_seconds": round(time.monotonic() - started, 2),
+        "weights_trained": False, "rules_enforced_by_app": False,
+        "inference_mode": "explicit nonthinking ChatML through local Ollama raw generation, JSON schema output",
+        "raw_draft": draft,
+        "note": "The model designed these rules; they have not been playtested. Landmark names come from MocPok's checked list when the place is known.",
+    }
+    PROJECTS.mkdir(exist_ok=True)
+    final = PROJECTS / project_id
+    try:
+        final.mkdir()
+        (final / "plan.json").write_text(json.dumps({"plan": plan, "model": metadata}, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+        (final / "board.svg").write_text(svg, encoding="utf-8")
+        (final / "rules.md").write_text(rules, encoding="utf-8")
+        with ZipFile(final / "print-kit.zip", "w", compression=ZIP_DEFLATED) as kit:
+            for name in ("plan.json", "board.svg", "rules.md"):
+                kit.write(final / name, name)
+    except OSError as exc:
+        raise DemoError("The game was designed but could not be saved on this computer.", "save_failed", 500) from exc
+    base = f"/api/projects/{project_id}/"
+    return {
+        "mode": "any", "project_id": project_id, "plan": plan, "preview_svg": svg,
+        "assets": {"svg": base + "board.svg", "rules": base + "rules.md", "plan": base + "plan.json", "kit": base + "print-kit.zip"},
+        "model": metadata,
+    }
+
+
 class Handler(BaseHTTPRequestHandler):
     server_version = "MocPokLocal/1.0"
 
@@ -353,7 +433,7 @@ class Handler(BaseHTTPRequestHandler):
             self._json(409, {"error": "MocPok is making another game. Please wait for it to finish.", "code": "busy"})
             return
         try:
-            self._json(200, generate_project(prompt.strip()))
+            self._json(200, generate_any(prompt.strip()))
         except DemoError as exc:
             self._json(exc.status, {"error": str(exc), "code": exc.code})
         except Exception as exc:
