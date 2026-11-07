@@ -50,7 +50,7 @@ The server only listens on `127.0.0.1` and makes no requests outside your comput
 
 ## What's next
 
-- Fine-tune a small open model on the roughly 3,100 game-rule documents we collected (traditional games from the Ludii project, public-domain rule books and more), so MocPok can invent new **rules** as well as new stories.
+- Fine-tune a small open model on the roughly 3,100 game-rule documents we collected (traditional games from the Ludii project, public-domain rule books and more), so MocPok can invent new **rules** as well as new stories. The collector scripts and the full metadata list are in [`rules-corpus/`](rules-corpus/). The rule text isn't included for copyright reasons, but the scripts rebuild it.
 - More board shapes and pieces than the 8×8 maze.
 - A one-click print path for family 3D printers.
 

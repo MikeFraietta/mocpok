@@ -6,3 +6,11 @@ library.sqlite3
 __pycache__/
 *.pyc
 .DS_Store
+
+# Rules corpus: commit only the scripts and metadata manifests, never collected rule text
+rules-corpus/corpus/*
+!rules-corpus/corpus/manifest.jsonl
+!rules-corpus/corpus/manifests/
+rules-corpus/raw/
+rules-corpus/.venv/
+rules-corpus/*.jsonl
