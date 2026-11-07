@@ -184,10 +184,11 @@ frame("blue", CORNER - LINE / 2, CORNER - LINE / 2, SIZE - 2 * CORNER + LINE, SI
 lo, hi = CORNER, SIZE - CORNER
 for j in range(6):  # dividers between spaces, incl. the corner edges
     v = lo + j * SIDE
-    rect("blue", v - LINE / 2, 1.4, LINE, CORNER - 1.4 - LINE / 2)                 # top row
-    rect("blue", v - LINE / 2, hi + LINE / 2, LINE, CORNER - 1.4 - LINE / 2)        # bottom row
-    rect("blue", 1.4, v - LINE / 2, CORNER - 1.4 - LINE / 2, LINE)                 # left column
-    rect("blue", hi + LINE / 2, v - LINE / 2, CORNER - 1.4 - LINE / 2, LINE)        # right column
+    # Overlap the border frames by 0.25 mm so no edges are shared (shared edges = non-manifold).
+    rect("blue", v - LINE / 2, 1.15, LINE, CORNER - 1.15 - LINE / 2 + 0.25)                 # top row
+    rect("blue", v - LINE / 2, hi + LINE / 2 - 0.25, LINE, CORNER - 1.15 - LINE / 2 + 0.25)  # bottom row
+    rect("blue", 1.15, v - LINE / 2, CORNER - 1.15 - LINE / 2 + 0.25, LINE)                 # left column
+    rect("blue", hi + LINE / 2 - 0.25, v - LINE / 2, CORNER - 1.15 - LINE / 2 + 0.25, LINE)  # right column
 
 # Spaces clockwise from START (bottom-right corner).
 pattern = [("L", "L", "S", "L", "L"), ("L", "L", "T", "L", "L"), ("L", "L", "S", "L", "L"), ("L", "L", "T", "L", "L")]
@@ -286,7 +287,7 @@ def main():
         meshes[color] = mesh_arrays(parts[color])
         print(color, len(parts[color]), "triangles,", len(meshes[color][0]), "vertices")
 
-    cx, cy = 100.0, 100.0  # leave room on the right for the prime tower
+    cx, cy = 98.0, 152.0  # board at back-left; prime tower goes front-right
     objs = []
     for i, (color, _) in enumerate(order, start=1):
         verts, faces = meshes[color]
@@ -330,7 +331,7 @@ def main():
         cfg["layer_height"] = "0.2"
         cfg["initial_layer_print_height"] = "0.2"
         cfg["wipe_tower_x"] = ["205"]
-        cfg["wipe_tower_y"] = ["200"]
+        cfg["wipe_tower_y"] = ["15"]
         cfg["flush_volumes_matrix"] = ["0" if r == k else "350" for r in range(4) for k in range(4)]
         files["Metadata/project_settings.config"] = json.dumps(cfg, indent=4)
     target = out / "Williamsburg_Board_4color.3mf"
